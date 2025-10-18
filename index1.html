@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GROUP TIME - Рекламная кампания Ланское</title>
+    <style>
+:root {
+  /* Campaign specific colors */
+  --campaign-bg: #0a0a0a;
+  --campaign-lime: #c4ff61;
+  --campaign-purple: #7B68EE;
+  --campaign-orange: #FF8C42;
+  --campaign-yellow: #FFD93D;
+  --campaign-red: #FF6B6B;
+  --campaign-pink: #FF6BA8;
+  --campaign-blue: #4A90E2;
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-family-base: 'Arial Black', Arial, sans-serif;
+  --font-family-body: Arial, Helvetica, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+  --font-weight-black: 900;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
+  --space-120: 120px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 500ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--campaign-bg);
+  color: var(--color-white);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-20);
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.logo__shark {
+  font-size: 24px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.logo__text {
+  font-size: 18px;
+  font-weight: var(--font-weight-black);
+  color: var(--color-white);
+  font-family: var(--font-family-base);
+}
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-8);
+}
+
+.nav__toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--color-white);
+  margin: 2px 0;
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.nav__list {
+  display: flex;
+  list-style: none;
+  gap: var(--space-32);
+}
+
+.nav__link {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--duration-normal) var(--ease-standard);
+  position: relative;
+}
+
+.nav__link:hover,
+.nav__link.active {
+  color: var(--campaign-lime);
+}
+
+/* Floating meme decorations */
+.meme-decoration {
+  position: absolute;
+  font-size: 2rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.meme-decoration--thinking {
+  animation: float 3s ease-in-out infinite;
+}
+
+.meme-decoration--fire {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.meme-decoration--100 {
+  animation: rotate 8s linear infinite;
+}
+
+.meme-decoration--rocket {
+  animation: bounce 2.5s ease-in-out infinite;
+}
+
+.meme-decoration--cool {
+  animation: fadeInOut 4s ease-in-out infinite;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--campaign-bg);
+  z-index: -1;
+}
+
+.hero__bg::before {
+  content: "🤔";
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-size: 4rem;
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero__bg::after {
+  content: "😎";
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  font-size: 3rem;
+  opacity: 0.3;
+  animation: rotate 12s linear infinite;
+}
+
+.hero__content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero__date {
+  position: absolute;
+  top: -80px;
+  right: 0;
+  font-size: 16px;
+  color: var(--color-white);
+  opacity: 0.8;
+}
+
+.hero__title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-32);
+  line-height: var(--line-height-tight);
+  position: relative;
+}
+
+.hero__title::before {
+  content: "💯";
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  font-size: 3rem;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.hero__title::after {
+  content: "🔥";
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  font-size: 2.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.hero__location {
+  background: var(--campaign-lime);
+  color: var(--campaign-bg);
+  padding: var(--space-16) var(--space-32);
+  border-radius: var(--radius-lg);
+  font-size: 20px;
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  display: inline-block;
+  margin-bottom: var(--space-32);
+  transform: rotate(-2deg);
+  position: relative;
+}
+
+.hero__location::before {
+  content: "⚡";
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.hero__location::after {
+  content: "🚀";
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero__contact {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-32);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--space-32);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.scroll-indicator__arrow {
+  font-size: 2rem;
+  color: var(--campaign-lime);
+}
+
+/* About Lanskoy Section */
+.about-lanskoy {
+  padding: var(--space-120) 0;
+  background: linear-gradient(135deg, rgba(196, 255, 97, 0.05) 0%, rgba(10, 10, 10, 1) 100%);
+  position: relative;
+}
+
+.about-lanskoy::before {
+  content: "🏘️";
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  font-size: 6rem;
+  opacity: 0.1;
+  animation: float 8s ease-in-out infinite;
+}
+
+.about-lanskoy__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  text-align: center;
+  margin-bottom: var(--space-80);
+  color: var(--campaign-lime);
+  position: relative;
+}
+
+.about-lanskoy__title::before {
+  content: "🤔";
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: rotate 6s linear infinite;
+}
+
+.about-lanskoy__title::after {
+  content: "💭";
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.about-lanskoy__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-32);
+  align-items: start;
+}
+
+.about-lanskoy__description {
+  font-size: 18px;
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-32);
+  opacity: 0.9;
+}
+
+.about-lanskoy__history h3 {
+  font-size: 24px;
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  color: var(--campaign-lime);
+  margin-bottom: var(--space-20);
+}
+
+.about-lanskoy__history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-lanskoy__history li {
+  font-size: 16px;
+  margin-bottom: var(--space-16);
+  padding-left: var(--space-24);
+  position: relative;
+  line-height: var(--line-height-normal);
+}
+
+.about-lanskoy__history li::before {
+  content: "⭐";
+  position: absolute;
+  left: 0;
+  font-size: 16px;
+}
+
+.about-lanskoy__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-20);
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(196, 255, 97, 0.3);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  text-align: center;
+  transition: all var(--duration-normal) var(--ease-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: var(--campaign-lime);
+  transition: left var(--duration-normal) var(--ease-standard);
+}
+
+.stat-card:hover::before {
+  left: 0;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--campaign-lime);
+  box-shadow: 0 10px 30px rgba(196, 255, 97, 0.2);
+}
+
+.stat-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-12);
+}
+
+.stat-card__number {
+  font-size: 20px;
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  color: var(--campaign-lime);
+  margin-bottom: var(--space-8);
+}
+
+.stat-card__label {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Slogan Section */
+.slogan {
+  padding: var(--space-120) 0;
+  background: var(--campaign-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.slogan::before {
+  content: "🌟";
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  font-size: 4rem;
+  opacity: 0.2;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.slogan::after {
+  content: "✨";
+  position: absolute;
+  bottom: 30%;
+  right: 15%;
+  font-size: 3rem;
+  opacity: 0.2;
+  animation: float 4s ease-in-out infinite;
+}
+
+.slogan__content {
+  text-align: center;
+  position: relative;
+}
+
+.slogan__emoji {
+  font-size: 4rem;
+  margin-bottom: var(--space-24);
+  animation: rotate 10s linear infinite;
+}
+
+.slogan__text {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  color: var(--color-white);
+  margin-bottom: var(--space-24);
+  position: relative;
+}
+
+.slogan__text::before {
+  content: "💪";
+  position: absolute;
+  left: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.slogan__text::after {
+  content: "🎯";
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+.slogan__x {
+  position: absolute;
+  top: 0;
+  right: 10%;
+  font-size: 3rem;
+  color: var(--campaign-red);
+  transform: rotate(-15deg);
+}
+
+/* Audience Section */
+.audience {
+  padding: var(--space-80) 0;
+  position: relative;
+}
+
+.audience::before {
+  content: "🎯";
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  font-size: 5rem;
+  opacity: 0.1;
+  animation: rotate 15s linear infinite;
+}
+
+.audience__banner {
+  background: var(--campaign-lime);
+  color: var(--campaign-bg);
+  padding: var(--space-32) 0;
+  margin-bottom: var(--space-32);
+  position: relative;
+}
+
+.audience__banner::before {
+  content: "💯";
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  opacity: 0.3;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.audience__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  margin-bottom: var(--space-16);
+}
+
+.audience__subtitle {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.audience__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-24);
+}
+
+.audience__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-24);
+  border-radius: var(--radius-lg);
+  border: 2px solid;
+  position: relative;
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.audience__item:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.audience__item--purple {
+  border-color: var(--campaign-purple);
+  background: rgba(123, 104, 238, 0.1);
+}
+
+.audience__item--orange {
+  border-color: var(--campaign-orange);
+  background: rgba(255, 140, 66, 0.1);
+}
+
+.audience__item--yellow {
+  border-color: var(--campaign-yellow);
+  background: rgba(255, 217, 61, 0.1);
+}
+
+.audience__item--red {
+  border-color: var(--campaign-red);
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.audience__icon {
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--campaign-bg);
+  flex-shrink: 0;
+}
+
+.audience__item--purple .audience__icon {
+  background: var(--campaign-purple);
+}
+
+.audience__item--orange .audience__icon {
+  background: var(--campaign-orange);
+}
+
+.audience__item--yellow .audience__icon {
+  background: var(--campaign-yellow);
+}
+
+.audience__item--red .audience__icon {
+  background: var(--campaign-red);
+}
+
+.audience__main {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-4);
+}
+
+.audience__sub {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Channels Section */
+.channels {
+  padding: var(--space-120) 0;
+  position: relative;
+}
+
+.channels::before {
+  content: "📢";
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  font-size: 4rem;
+  opacity: 0.1;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.channels__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  text-align: center;
+  margin-bottom: var(--space-80);
+  position: relative;
+}
+
+.channels__title::before {
+  content: "🚀";
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: bounce 2.5s ease-in-out infinite;
+}
+
+.channels__title::after {
+  content: "⚡";
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.channels__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-32);
+  position: relative;
+}
+
+.channels__item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--space-32);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.channels__item:hover {
+  transform: translateY(-8px);
+}
+
+.channels__item::before {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: float 3s ease-in-out infinite;
+}
+
+.channels__item:nth-child(1)::before {
+  content: "📱💬";
+  top: -10px;
+  right: -10px;
+}
+
+.channels__item:nth-child(2)::before {
+  content: "📰🖨️";
+  top: -10px;
+  right: -10px;
+  animation-delay: 1s;
+}
+
+.channels__item:nth-child(3)::before {
+  content: "🗺️📍";
+  top: -10px;
+  right: -10px;
+  animation-delay: 2s;
+}
+
+.channels__icon {
+  font-size: 2rem;
+  color: var(--campaign-lime);
+  margin-bottom: var(--space-16);
+}
+
+.channels__name {
+  font-size: 18px;
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  margin-bottom: var(--space-16);
+}
+
+.channels__label {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-12);
+}
+
+.channels__label--blue {
+  color: var(--campaign-blue);
+}
+
+.channels__label--red {
+  color: var(--campaign-red);
+}
+
+.channels__label--orange {
+  color: var(--campaign-orange);
+}
+
+.channels__description {
+  font-size: 14px;
+  line-height: var(--line-height-normal);
+  opacity: 0.9;
+}
+
+/* Effects Section */
+.effects {
+  padding: var(--space-120) 0;
+  background: rgba(255, 255, 255, 0.02);
+  position: relative;
+}
+
+.effects::before {
+  content: "📈";
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  font-size: 5rem;
+  opacity: 0.1;
+  animation: bounce 4s ease-in-out infinite;
+}
+
+.effects::after {
+  content: "💯🔥";
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  font-size: 2rem;
+  opacity: 0.2;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.effects__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  text-align: center;
+  margin-bottom: var(--space-80);
+  position: relative;
+}
+
+.effects__title::before {
+  content: "🎯";
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: rotate 8s linear infinite;
+}
+
+.effects__title::after {
+  content: "📈";
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.effects__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-32);
+  align-items: center;
+}
+
+.effects__box {
+  padding: var(--space-32);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-24);
+  position: relative;
+}
+
+.effects__box--attention {
+  background: var(--color-white);
+  color: var(--campaign-bg);
+}
+
+.effects__box--attention::before {
+  content: "📱📧";
+  position: absolute;
+  top: var(--space-16);
+  right: var(--space-16);
+  font-size: 1.5rem;
+  opacity: 0.3;
+}
+
+.effects__box--reaction {
+  background: var(--campaign-lime);
+  color: var(--campaign-bg);
+}
+
+.effects__box--reaction::before {
+  content: "🏛️👥";
+  position: absolute;
+  top: var(--space-16);
+  right: var(--space-16);
+  font-size: 1.5rem;
+  opacity: 0.3;
+}
+
+.effects__subtitle {
+  font-size: 18px;
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  margin-bottom: var(--space-20);
+}
+
+.effects__list {
+  list-style: none;
+}
+
+.effects__list li {
+  margin-bottom: var(--space-16);
+  padding-left: var(--space-24);
+  position: relative;
+  line-height: var(--line-height-normal);
+  font-size: 14px;
+}
+
+.effects__list li::before {
+  content: "✅";
+  position: absolute;
+  left: 0;
+  font-size: 16px;
+}
+
+.effects__image {
+  position: relative;
+  text-align: center;
+}
+
+.effects__image-placeholder {
+  font-size: 8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Problems Section */
+.problems {
+  padding: var(--space-120) 0;
+  position: relative;
+}
+
+.problems::before {
+  content: "🔍";
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  font-size: 4rem;
+  opacity: 0.1;
+  animation: rotate 10s linear infinite;
+}
+
+.problems::after {
+  content: "🤔💭";
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+  font-size: 2rem;
+  opacity: 0.2;
+  animation: float 5s ease-in-out infinite;
+}
+
+.problems__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  text-align: center;
+  margin-bottom: var(--space-80);
+  position: relative;
+}
+
+.problems__title::before {
+  content: "🔍";
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.problems__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-32);
+  align-items: center;
+}
+
+.problems__start {
+  text-align: center;
+  margin-bottom: var(--space-32);
+}
+
+.decoration--start {
+  background: var(--campaign-red);
+  color: var(--color-white);
+  padding: var(--space-12) var(--space-24);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  display: inline-block;
+  transform: rotate(-8deg);
+  font-size: 16px;
+  position: relative;
+}
+
+.decoration--start::before {
+  content: "▶️";
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.problems__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.problems__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-20);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.problems__item:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.problems__item::before {
+  font-size: 1.5rem;
+  margin-right: var(--space-12);
+}
+
+.problems__item:nth-child(1)::before {
+  content: "🗑️";
+}
+
+.problems__item:nth-child(2)::before {
+  content: "🚗";
+}
+
+.problems__item:nth-child(3)::before {
+  content: "🛒";
+}
+
+.problems__item:nth-child(4)::before {
+  content: "🕳️";
+}
+
+.problems__text {
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  flex: 1;
+}
+
+.problems__map {
+  position: relative;
+  text-align: center;
+}
+
+.problems__map-placeholder {
+  font-size: 12rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.problems__map-placeholder::before {
+  content: "📍";
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  font-size: 2rem;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.problems__map-placeholder::after {
+  content: "📍";
+  position: absolute;
+  bottom: 30%;
+  right: 25%;
+  font-size: 1.5rem;
+  animation: pulse 2.5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Call to Action Section */
+.cta {
+  padding: var(--space-120) 0;
+  background: var(--campaign-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(196, 255, 97, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta::after {
+  content: "🤝";
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: 4rem;
+  opacity: 0.1;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.cta__title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  text-align: center;
+  margin-bottom: var(--space-20);
+  color: var(--color-white);
+  position: relative;
+}
+
+.cta__title::before {
+  content: "🚀";
+  position: absolute;
+  left: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  animation: bounce 2.5s ease-in-out infinite;
+}
+
+.cta__title::after {
+  content: "💪";
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.cta__subtitle {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: var(--space-80);
+  opacity: 0.8;
+}
+
+.cta__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-32);
+  margin-bottom: var(--space-80);
+}
+
+.cta__card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-32);
+  text-align: center;
+  transition: all var(--duration-normal) var(--ease-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta__card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--campaign-lime), var(--campaign-blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.cta__card:hover::before {
+  transform: scaleX(1);
+}
+
+.cta__card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(196, 255, 97, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.cta__card:nth-child(1)::after {
+  content: "🔥";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.cta__card:nth-child(2)::after {
+  content: "💯";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: rotate 6s linear infinite;
+}
+
+.cta__card:nth-child(3)::after {
+  content: "⚡";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: bounce 2.5s ease-in-out infinite;
+}
+
+.cta__icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-20);
+  display: block;
+}
+
+.cta__card-title {
+  font-size: 18px;
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family-base);
+  margin-bottom: var(--space-16);
+  color: var(--campaign-lime);
+}
+
+.cta__card-description {
+  font-size: 14px;
+  margin-bottom: var(--space-24);
+  opacity: 0.8;
+  line-height: var(--line-height-normal);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12) var(--space-24);
+  background: var(--campaign-lime);
+  color: var(--campaign-bg);
+  border: none;
+  border-radius: var(--radius-base);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-base);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(196, 255, 97, 0.3);
+}
+
+.cta__hashtags {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-16);
+  flex-wrap: wrap;
+}
+
+.hashtag {
+  background: rgba(196, 255, 97, 0.2);
+  color: var(--campaign-lime);
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-full);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  border: 1px solid rgba(196, 255, 97, 0.5);
+  transition: all var(--duration-fast) var(--ease-standard);
+  cursor: pointer;
+  position: relative;
+}
+
+.hashtag:hover {
+  background: var(--campaign-lime);
+  color: var(--campaign-bg);
+  transform: translateY(-2px);
+}
+
+.hashtag::before {
+  position: absolute;
+  font-size: 1rem;
+  top: -15px;
+  right: -10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.hashtag:nth-child(1)::before {
+  content: "🌟";
+}
+
+.hashtag:nth-child(2)::before {
+  content: "⚡";
+  animation-delay: 1s;
+}
+
+.hashtag:nth-child(3)::before {
+  content: "🚀";
+  animation-delay: 2s;
+}
+
+/* Footer */
+.footer {
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-80) 0 var(--space-32) 0;
+  position: relative;
+}
+
+.footer::before {
+  content: "✨";
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  font-size: 2rem;
+  opacity: 0.2;
+  animation: float 4s ease-in-out infinite;
+}
+
+.footer::after {
+  content: "🌟";
+  position: absolute;
+  bottom: 30%;
+  right: 15%;
+  font-size: 1.5rem;
+  opacity: 0.2;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-32);
+  margin-bottom: var(--space-32);
+}
+
+.footer__description {
+  font-size: 16px;
+  opacity: 0.8;
+  margin-top: var(--space-16);
+  line-height: var(--line-height-normal);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin-bottom: var(--space-20);
+}
+
+.footer__links a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.footer__links a:hover {
+  color: var(--campaign-lime);
+}
+
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.footer__contact a {
+  color: var(--campaign-lime);
+  text-decoration: none;
+  font-size: 14px;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.footer__contact a:hover {
+  opacity: 0.7;
+}
+
+.footer__bottom {
+  text-align: center;
+  padding-top: var(--space-32);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__bottom p {
+  opacity: 0.6;
+  margin: 0;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Scroll animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all var(--duration-slow) var(--ease-standard);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-16);
+  }
+  
+  .about-lanskoy__content {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+  }
+  
+  .about-lanskoy__stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta__cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer__content {
+    grid-template-columns: 1fr;
+  }
+
+  .header__content {
+    height: 60px;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--campaign-bg);
+    flex-direction: column;
+    padding: var(--space-20);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav__list.active {
+    display: flex;
+  }
+
+  .hero__date {
+    position: static;
+    margin-bottom: var(--space-20);
+  }
+
+  .hero__contact {
+    position: static;
+    transform: none;
+    flex-direction: column;
+    gap: var(--space-16);
+    margin-top: var(--space-32);
+  }
+
+  .hero__title::before,
+  .hero__title::after {
+    display: none;
+  }
+
+  .hero__location::before,
+  .hero__location::after {
+    display: none;
+  }
+
+  .about-lanskoy__title::before,
+  .about-lanskoy__title::after {
+    display: none;
+  }
+
+  .slogan__text::before,
+  .slogan__text::after {
+    display: none;
+  }
+
+  .channels__title::before,
+  .channels__title::after {
+    display: none;
+  }
+
+  .effects__title::before,
+  .effects__title::after {
+    display: none;
+  }
+
+  .cta__title::before,
+  .cta__title::after {
+    display: none;
+  }
+
+  .effects__content {
+    grid-template-columns: 1fr;
+  }
+
+  .problems__content {
+    grid-template-columns: 1fr;
+  }
+
+  .problems__map-placeholder {
+    width: 250px;
+    height: 250px;
+    font-size: 8rem;
+  }
+
+  .audience__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .channels__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .effects__image-placeholder {
+    width: 150px;
+    height: 150px;
+    font-size: 6rem;
+  }
+  
+  .hashtag {
+    font-size: 14px;
+  }
+  
+  .cta__title {
+    font-size: 2rem;
+  }
+  
+  .about-lanskoy__title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 2.5rem;
+  }
+
+  .hero__location {
+    font-size: 16px;
+    padding: var(--space-12) var(--space-20);
+  }
+
+  .slogan__text {
+    font-size: 2rem;
+  }
+
+  .audience__item {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-12);
+  }
+
+  .problems__item {
+    flex-direction: column;
+    gap: var(--space-12);
+    text-align: center;
+  }
+}
+
+/* Focus styles */
+.nav__link:focus-visible {
+  outline: 2px solid var(--campaign-lime);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--campaign-lime);
+  outline-offset: 2px;
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <div class="logo__shark">🦈</div>
+                    <span class="logo__text">GROUP TIME</span>
+                </div>
+                <nav class="nav" id="nav">
+                    <button class="nav__toggle" id="nav-toggle" aria-label="Меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav__list" id="nav-list">
+                        <li><a href="#hero" class="nav__link">Главная</a></li>
+                        <li><a href="#about-lanskoy" class="nav__link">О районе</a></li>
+                        <li><a href="#slogan" class="nav__link">Слоган</a></li>
+                        <li><a href="#audience" class="nav__link">Аудитория</a></li>
+                        <li><a href="#channels" class="nav__link">Каналы</a></li>
+                        <li><a href="#effects" class="nav__link">Эффект</a></li>
+                        <li><a href="#problems" class="nav__link">Проблемы</a></li>
+                        <li><a href="#cta" class="nav__link">Участие</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero__bg"></div>
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__date">Октябрь 2025</div>
+                <h1 class="hero__title">
+                    РЕКЛАМНАЯ КАМПАНИЯ
+                </h1>
+                <div class="hero__location">
+                    Муниципальное образование 'Ланское'
+                </div>
+                <div class="hero__contact">
+                    <div class="hero__website">www.grouptime.ru</div>
+                    <div class="hero__email">grouptime@mail.ru</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-indicator__arrow">⬇️</div>
+        </div>
+    </section>
+
+    <!-- About Lanskoy Section -->
+    <section class="about-lanskoy" id="about-lanskoy">
+        <div class="container">
+            <h2 class="about-lanskoy__title">О муниципальном округе Ланское 🏘️</h2>
+            <div class="about-lanskoy__content">
+                <div class="about-lanskoy__text">
+                    <p class="about-lanskoy__description">
+                        Исторический район Санкт-Петербурга, названный в честь усадьбы дворянского рода Ланских. 
+                        Территория между Чёрной речкой и Выборгской дорогой имеет богатую историю, связанную с именами 
+                        великих деятелей русской культуры, включая А.С. Пушкина.
+                    </p>
+                    <div class="about-lanskoy__history">
+                        <h3>Историческая справка:</h3>
+                        <ul>
+                            <li>В 1779 году Екатерина II подарила фавориту А.Д. Ланскому участок земли</li>
+                            <li>До начала XX века - дачный пригород Санкт-Петербурга</li>
+                            <li>Связан с именами А.С. Пушкина, М.И. Глинки, О.А. Кипренского</li>
+                            <li>Современный жилой район с развитой инфраструктурой</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="about-lanskoy__stats">
+                    <div class="stat-card">
+                        <div class="stat-card__icon">👥</div>
+                        <div class="stat-card__number">70,100+</div>
+                        <div class="stat-card__label">жителей</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">📍</div>
+                        <div class="stat-card__number">Приморский район</div>
+                        <div class="stat-card__label">Северный СПб</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">🏛️</div>
+                        <div class="stat-card__number">Конец XVIII в.</div>
+                        <div class="stat-card__label">Основан</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card__icon">🚇</div>
+                        <div class="stat-card__number">Чёрная речка</div>
+                        <div class="stat-card__label">Метро</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slogan Section -->
+    <section class="slogan" id="slogan">
+        <div class="container">
+            <div class="slogan__content">
+                <div class="slogan__emoji">☀️</div>
+                <h2 class="slogan__text">Твой Ланской – Сделай чище!</h2>
+                <div class="slogan__x">❌</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience Section -->
+    <section class="audience" id="audience">
+        <div class="audience__banner">
+            <div class="container">
+                <h2 class="audience__title">🎯 Целевая аудитория</h2>
+                <p class="audience__subtitle">На кого мы ориентируемся? Кто все же поможет нашему муниципальному образованию?</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="audience__grid">
+                <div class="audience__item audience__item--purple">
+                    <div class="audience__icon">😎</div>
+                    <div class="audience__text">
+                        <div class="audience__main">Все жители МО</div>
+                        <div class="audience__sub">(Кому не всё равно!!)</div>
+                    </div>
+                </div>
+                <div class="audience__item audience__item--orange">
+                    <div class="audience__icon">🏛️</div>
+                    <div class="audience__text">
+                        <div class="audience__main">Администрация МО</div>
+                    </div>
+                </div>
+                <div class="audience__item audience__item--yellow">
+                    <div class="audience__icon">🤝</div>
+                    <div class="audience__text">
+                        <div class="audience__main">Местные объединения</div>
+                    </div>
+                </div>
+                <div class="audience__item audience__item--red">
+                    <div class="audience__icon">💪</div>
+                    <div class="audience__text">
+                        <div class="audience__main">Активная молодёжь</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Distribution Channels Section -->
+    <section class="channels" id="channels">
+        <div class="container">
+            <h2 class="channels__title">📢 Каналы распространения</h2>
+            <div class="channels__grid">
+                <div class="channels__item channels__item--1">
+                    <div class="channels__icon">📱</div>
+                    <h3 class="channels__name">Канал распространения 1</h3>
+                    <div class="channels__label channels__label--blue">Соцсети:</div>
+                    <p class="channels__description">Флешмоб в пабликах ВКонтакте и Телеграм-каналах округа. Предложить жителям выкладывать свои фото проблем округа с хештегами кампании (например, #ЧистыйЛанской) и отмечать администрацию. 💬📱</p>
+                </div>
+                <div class="channels__item channels__item--2">
+                    <div class="channels__icon">📰</div>
+                    <h3 class="channels__name">Канал распространения 2</h3>
+                    <div class="channels__label channels__label--red">Печатные материалы:</div>
+                    <p class="channels__description">Плакаты формата А3, размещенные у подъездов, на лифтах и на досках объявлений, с изображением самых острых проблем конкретных дворов. 🖨️📰</p>
+                </div>
+                <div class="channels__item channels__item--3">
+                    <div class="channels__icon">🗺️</div>
+                    <h3 class="channels__name">Канал распространения 3</h3>
+                    <div class="channels__label channels__label--orange">Интерактивный элемент:</div>
+                    <p class="channels__description">Создать публичную 'Карту проблем округа Ланской' с помощью бесплатных онлайн-инструментов (например, Google Карты). Жители смогут отмечать на карте проблемные места. 📍🗺️</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expected Effects Section -->
+    <section class="effects" id="effects">
+        <div class="container">
+            <h2 class="effects__title">🎯📈 Ожидаемый эффект</h2>
+            <div class="effects__content">
+                <div class="effects__left">
+                    <div class="effects__box effects__box--attention">
+                        <h3 class="effects__subtitle">Охват в СМИ и соцсетях</h3>
+                        <ul class="effects__list">
+                            <li>📧 20+ коллективных жалоб в управу округа</li>
+                            <li>📱 5+ публикаций в СМИ и 50+ репостов</li>
+                        </ul>
+                    </div>
+                    <div class="effects__box effects__box--reaction">
+                        <h3 class="effects__subtitle">Реакция властей</h3>
+                        <ul class="effects__list">
+                            <li>🏛️ Официальный ответ с планом действий</li>
+                            <li>👥 10+ волонтёров для субботника</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="effects__right">
+                    <div class="effects__image">
+                        <div class="effects__image-placeholder">🏛️</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems" id="problems">
+        <div class="container">
+            <h2 class="problems__title">🔍 Какие проблемы таятся у нас?</h2>
+            <div class="problems__content">
+                <div class="problems__left">
+                    <div class="problems__start">
+                        <div class="decoration--start">START</div>
+                    </div>
+                    <div class="problems__list">
+                        <div class="problems__item">
+                            <span class="problems__text">Разбросанный мусор</span>
+                        </div>
+                        <div class="problems__item">
+                            <span class="problems__text">Хаотичная парковка</span>
+                        </div>
+                        <div class="problems__item">
+                            <span class="problems__text">Нелегальная торговля (возможно)</span>
+                        </div>
+                        <div class="problems__item">
+                            <span class="problems__text">Разбитая дорога и ямы</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="problems__right">
+                    <div class="problems__map">
+                        <div class="problems__map-placeholder">🗺️</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2 class="cta__title">🤝 Присоединяйтесь!</h2>
+            <p class="cta__subtitle">Вместе мы можем сделать Ланской чище и лучше</p>
+            <div class="cta__cards">
+                <div class="cta__card">
+                    <div class="cta__icon">📢</div>
+                    <h3 class="cta__card-title">Сообщить о проблеме</h3>
+                    <p class="cta__card-description">Расскажите нам о проблемах в вашем районе</p>
+                    <button class="btn btn--primary">Сообщить</button>
+                </div>
+                <div class="cta__card">
+                    <div class="cta__icon">🔄</div>
+                    <h3 class="cta__card-title">Поделиться</h3>
+                    <p class="cta__card-description">Распространите информацию о кампании</p>
+                    <button class="btn btn--primary">Поделиться</button>
+                </div>
+                <div class="cta__card">
+                    <div class="cta__icon">🤝</div>
+                    <h3 class="cta__card-title">Стать волонтёром</h3>
+                    <p class="cta__card-description">Присоединяйтесь к нашей команде активистов</p>
+                    <button class="btn btn--primary">Присоединиться</button>
+                </div>
+            </div>
+            <div class="cta__hashtags">
+                <span class="hashtag">#ЧистыйЛанской</span>
+                <span class="hashtag">#ГруппаВремени</span>
+                <span class="hashtag">#Ланское</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__left">
+                    <div class="logo">
+                        <div class="logo__shark">🦈</div>
+                        <span class="logo__text">GROUP TIME</span>
+                    </div>
+                    <p class="footer__description">
+                        Гражданская кампания за чистоту и благоустройство муниципального округа Ланское
+                    </p>
+                </div>
+                <div class="footer__right">
+                    <div class="footer__links">
+                        <a href="#hero">О кампании</a>
+                        <a href="mailto:grouptime@mail.ru">Контакты</a>
+                        <a href="#cta">Социальные сети</a>
+                    </div>
+                    <div class="footer__contact">
+                        <a href="https://www.grouptime.ru" target="_blank">www.grouptime.ru</a>
+                        <a href="mailto:grouptime@mail.ru">grouptime@mail.ru</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 GROUP TIME. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+// Mobile navigation toggle
+const navToggle = document.getElementById('nav-toggle');
+const navList = document.getElementById('nav-list');
+
+if (navToggle && navList) {
+    navToggle.addEventListener('click', () => {
+        navList.classList.toggle('active');
+        navToggle.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav__link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navList.classList.remove('active');
+            navToggle.classList.remove('active');
+        });
+    });
+}
+
+// Header scroll effect
+const header = document.getElementById('header');
+let lastScrollY = window.scrollY;
+
+if (header) {
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > 100) {
+            header.style.backgroundColor = 'rgba(10, 10, 10, 0.98)';
+            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+        } else {
+            header.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+            header.style.boxShadow = 'none';
+        }
+        
+        lastScrollY = currentScrollY;
+    });
+}
+
+// Active navigation link highlighting
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav__link');
+
+function updateActiveNavLink() {
+    const scrollY = window.pageYOffset;
+    
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`a[href="#${sectionId}"]`);
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            if (navLink) {
+                navLink.classList.add('active');
+            }
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+
+// Scroll animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// CTA Button handlers
+function initializeCTAButtons() {
+    const ctaButtons = document.querySelectorAll('.cta__card button');
+    
+    ctaButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            const actions = [
+                () => {
+                    window.open('mailto:grouptime@mail.ru?subject=Сообщение о проблеме в МО Ланское&body=Опишите проблему, укажите адрес и приложите фотографии если возможно.', '_blank');
+                },
+                () => {
+                    const text = encodeURIComponent('Присоединяйтесь к кампании "Твой Ланской – Сделай чище!" #ЧистыйЛанской #ГруппаВремени');
+                    const url = encodeURIComponent('https://www.grouptime.ru');
+                    window.open(`https://vk.com/share.php?url=${url}&title=${text}`, '_blank');
+                },
+                () => {
+                    window.open('mailto:grouptime@mail.ru?subject=Хочу стать волонтёром&body=Здравствуйте! Я хочу присоединиться к команде волонтёров GROUP TIME.', '_blank');
+                }
+            ];
+            
+            if (actions[index]) {
+                actions[index]();
+            }
+        });
+    });
+}
+
+// Enhanced stats counter animation
+function animateStats() {
+    const statNumbers = document.querySelectorAll('.stat-card__number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const text = target.textContent;
+                
+                if (text.includes('70,100+')) {
+                    animateNumber(target, 0, 70100, 2000, '+');
+                }
+            }
+        });
+    });
+    
+    statNumbers.forEach(stat => observer.observe(stat));
+}
+
+function animateNumber(element, start, end, duration, suffix = '') {
+    const startTime = performance.now();
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const current = Math.floor(start + (end - start) * progress);
+        element.textContent = current.toLocaleString('ru-RU') + suffix;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+    
+    requestAnimationFrame(update);
+}
+
+// Elements to animate on scroll
+const animatedElements = document.querySelectorAll(`
+    .audience__item,
+    .channels__item,
+    .effects__box,
+    .problems__item,
+    .slogan__text,
+    .effects__image,
+    .stat-card,
+    .cta__card,
+    .about-lanskoy__description
+`);
+
+animatedElements.forEach(el => {
+    el.classList.add('fade-in');
+    observer.observe(el);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offsetTop = target.offsetTop - 80; // Account for fixed header
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Scroll indicator click
+const scrollIndicator = document.querySelector('.scroll-indicator');
+if (scrollIndicator) {
+    scrollIndicator.addEventListener('click', () => {
+        const aboutSection = document.getElementById('about-lanskoy');
+        if (aboutSection) {
+            const offsetTop = aboutSection.offsetTop - 80;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+}
+
+// Enhanced hashtag interactions
+function initializeHashtags() {
+    const hashtags = document.querySelectorAll('.hashtag');
+    
+    hashtags.forEach(hashtag => {
+        hashtag.addEventListener('click', () => {
+            const text = hashtag.textContent;
+            const searchUrl = `https://vk.com/search?c%5Bq%5D=${encodeURIComponent(text)}&c%5Bsection%5D=auto`;
+            window.open(searchUrl, '_blank');
+        });
+        
+        hashtag.style.cursor = 'pointer';
+        hashtag.title = `Найти в ВКонтакте: ${hashtag.textContent}`;
+    });
+}
+
+// Enhanced hover effects for cards
+const hoverElements = document.querySelectorAll(`
+    .audience__item,
+    .channels__item,
+    .problems__item,
+    .stat-card,
+    .cta__card
+`);
+
+hoverElements.forEach(element => {
+    element.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+        this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.2)';
+    });
+    
+    element.addEventListener('mouseleave', function() {
+        this.style.transform = '';
+        this.style.boxShadow = '';
+    });
+});
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', () => {
+    // Set initial active nav link
+    updateActiveNavLink();
+    
+    // Initialize features
+    initializeCTAButtons();
+    animateStats();
+    initializeHashtags();
+    
+    // Add loading animation class removal
+    document.body.style.opacity = '1';
+    
+    // Start any initial animations
+    const heroContent = document.querySelector('.hero__content');
+    if (heroContent) {
+        heroContent.style.animation = 'fadeInUp 1s ease-out';
+    }
+});
+
+// Add CSS animation keyframes dynamically
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    body {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+    
+    .loaded {
+        opacity: 1;
+    }
+`;
+document.head.appendChild(style);
+
+// Accessibility improvements
+document.addEventListener('keydown', (e) => {
+    // Close mobile menu with Escape key
+    if (e.key === 'Escape' && navList && navList.classList.contains('active')) {
+        navList.classList.remove('active');
+        if (navToggle) {
+            navToggle.classList.remove('active');
+            navToggle.focus();
+        }
+    }
+});
+
+// Add focus styles for keyboard navigation
+const focusableElements = document.querySelectorAll(`
+    a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])
+`);
+
+focusableElements.forEach(element => {
+    element.addEventListener('focus', function() {
+        this.classList.add('keyboard-focus');
+    });
+    
+    element.addEventListener('blur', function() {
+        this.classList.remove('keyboard-focus');
+    });
+});
+
+// Fun meme interactions
+document.addEventListener('click', (e) => {
+    // Create floating emoji on click
+    const emojis = ['🤔', '💯', '🔥', '✅', '😎', '🚀', '⚡', '🌟'];
+    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+    
+    const floatingEmoji = document.createElement('div');
+    floatingEmoji.textContent = randomEmoji;
+    floatingEmoji.style.cssText = `
+        position: fixed;
+        left: ${e.clientX}px;
+        top: ${e.clientY}px;
+        font-size: 2rem;
+        pointer-events: none;
+        z-index: 9999;
+        animation: float 2s ease-out forwards;
+        opacity: 0.8;
+    `;
+    
+    document.body.appendChild(floatingEmoji);
+    
+    setTimeout(() => {
+        floatingEmoji.remove();
+    }, 2000);
+});
+
+// Add random meme decorations that appear periodically
+setInterval(() => {
+    if (Math.random() > 0.7) { // 30% chance every interval
+        const memes = ['🤔', '😎', '💪', '🎯', '🚀', '⚡', '🔥', '💯'];
+        const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+        
+        const memeElement = document.createElement('div');
+        memeElement.textContent = randomMeme;
+        memeElement.style.cssText = `
+            position: fixed;
+            left: ${Math.random() * window.innerWidth}px;
+            top: ${Math.random() * window.innerHeight}px;
+            font-size: 1.5rem;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: -1;
+            animation: fadeInOut 4s ease-in-out;
+        `;
+        
+        document.body.appendChild(memeElement);
+        
+        setTimeout(() => {
+            memeElement.remove();
+        }, 4000);
+    }
+}, 10000); // Check every 10 seconds
+    </script>
+</body>
+</html>
